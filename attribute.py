@@ -1,4 +1,5 @@
-class Attribute():
+from enum import Enum
+class Attribute(Enum):
     STR = 1
     PER = 2
     END = 3
