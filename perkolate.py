@@ -3,25 +3,6 @@
 from perks import Perk
 from attribute import Attribute
 
-perks = []
-
-def get_perks(perk_names_and_rank, perks):
-    perks = []
-
-    for index, name_rank in enumerate(perk_names_and_rank):
-        if isinstance(name_rank, tuple):
-            print("Checking for {0}".format(name_rank))
-            if name_rank in perks:
-                perks.append(perks[name_rank])
-        else:
-            i = 1;
-            print("Checking if {perk} is available: {status}".format(perk=name_rank, status=((name_rank, i) in perks)))
-            while (name_rank, i) in perks:
-                perks.append(perks[(name_rank, i)])
-                i += 1
-
-    return perks
-
 attribute_levels = {
             Attribute.STR:3,
             Attribute.PER:3,

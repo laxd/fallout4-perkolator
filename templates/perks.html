@@ -1,4 +1,7 @@
 <html>
+<head>
+	<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+</head>
 	<body>
 		<div class="special_container">
 			{% for attribute in attributes %}
@@ -21,9 +24,13 @@
 			</div>
 			{% endfor %}
 		</div>
-		Perks:
-		{% for perk in perks %}
-			<div class="perk">{{ perk.name }} - Rank {{ perk.rank }}</div>
+		{% for attribute in attributes %}
+			<div class="perk_container">
+				<div>{{ attribute }}</div>
+				{% for perk in perks[attribute] %}
+					<div class="perk">{{perk.attribute_level}} - {{ perk.name }}</div>
+				{% endfor %}
+			</div>
 		{% endfor %}
 	</body>
 </html>

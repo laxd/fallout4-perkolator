@@ -1,0 +1,9 @@
+.perk_container {
+	width: 14%;
+	float: left;
+}
+
+.perk {
+	white-space: nowrap;
+	overflow: hidden;
+}
