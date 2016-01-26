@@ -30,7 +30,21 @@
 			<div class="perk_container">
 				<div>{{ attribute }}</div>
 				{% for perk in perks[attribute] %}
-					<div class="perk">{{perk.attribute_level}} - {{ perk.name }}</div>
+				<div class="perk">
+					<div class="perk-name">{{ perk.name }}</div>
+					<div class="perk-ranks">
+						{% for rank in perk.ranks %}
+							<div class="perk-rank">
+								<div class="rank-level">
+									{{ rank.rank_level }}
+								</div>
+								<div class="rank-required-level">
+									{{ rank.required_level }}
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
 				{% endfor %}
 			</div>
 		{% endfor %}
