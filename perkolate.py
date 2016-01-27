@@ -5,15 +5,26 @@ from attribute import Attribute
 
 attribute_levels = {
             Attribute.STR:3,
-            Attribute.PER:3,
+            Attribute.PER:6,
             Attribute.END:3,
-            Attribute.CHA:3,
-            Attribute.INT:3,
-            Attribute.AGI:3,
-            Attribute.LCK:3
+            Attribute.CHA:6,
+            Attribute.INT:6,
+            Attribute.AGI:4,
+            Attribute.LCK:4
         }
 
 
+
+# Current Perks
+# Armourer - Rank 1
+# Rifleman - Rank 2
+# Awareness - Rank 1
+# Locksmith - Rank 2
+# Local Leader - Rank 1
+# Gun Nut - Rank 2
+# Hacker - Rank 2
+# Scrapper - Rank 1
+# Science! - Rank 1
 
 current_perks = []
 desired_perks = create_ranks("Ninja", Attribute.AGI, 7, [0,16,33])
