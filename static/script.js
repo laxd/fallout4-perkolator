@@ -11,12 +11,14 @@ $(document).ready(function(){
 
 	$(".perk").on("click", function(){
 		var perkname = $(this).find(".perk-name").text()
-		var maxRank = 3
+		var ranks = $(this).find(".perk-ranks > div");
+		var maxRank = ranks.size()
 		if(perkToRank[perkname] < maxRank) {
 			perkToRank[perkname]++
 		}
 		console.log("Increase " + perkname + " - Rank: " + perkToRank[perkname])
 	});
+
 
 	var perkToRank = {}
 

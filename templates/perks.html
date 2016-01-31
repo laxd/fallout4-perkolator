@@ -34,10 +34,7 @@
 					<div class="perk-name">{{ perk.name }}</div>
 					<div class="perk-ranks">
 						{% for rank in perk.ranks %}
-							<div class="perk-rank">
-								<div class="rank-level">
-									{{ rank.rank_level }}
-								</div>
+							<div class="perk-rank-{{rank.rank_level}}">
 								<div class="rank-required-level">
 									{{ rank.required_level }}
 								</div>
