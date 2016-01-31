@@ -26,8 +26,13 @@ $(document).ready(function(){
 			method: "POST",
 			data: perkToRank,
 			success: function(data) {
+				suggestions = $("#suggestions")
+				suggestions.empty()
 				for(key in data) {
-					$("#suggestions").append(key + " -> " + data[key])
+					suggestion = $("<div>");
+					suggestion.attr("class", "suggestion_container")
+					suggestion.html(key + " -> " + data[key])
+					suggestions.append(suggestion)
 				}
 			}
 		})

@@ -11,3 +11,7 @@
 .perk-ranks {
 	display: none;
 }
+
+.suggestion-container {
+	display: block;
+}
