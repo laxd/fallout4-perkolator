@@ -102,3 +102,54 @@ LCK_perks.append(create_ranks("Grim Reaper's Sprint", Attribute.LCK, 8, [0,19,46
 LCK_perks.append(create_ranks("Four Leaf Clover", Attribute.LCK, 9, [0,13,32,48]))
 LCK_perks.append(create_ranks("Ricochet", Attribute.LCK, 10, [0,29,50]))
 perks[Attribute.LCK] = LCK_perks
+
+attributes = {
+            Attribute.STR:3,
+            Attribute.PER:6,
+            Attribute.END:3,
+            Attribute.CHA:6,
+            Attribute.INT:6,
+            Attribute.AGI:4,
+            Attribute.LCK:4
+        }
+
+def is_perk_available_and_desired(perk, attributes, level, desired, current):
+    return (perk in desired
+        and level > perk.character_level
+        and perk.name not in current
+        and perk.attribute_rank >= attributes[perk.attribute]);
+
+def get_available_perks(attributes, perks, level, desired_perks, current_perks):
+    available_perks=[]
+    for attribute in attributes:
+        for perk in perks[attribute]:
+            if is_perk_available_and_desired(perk, attributes, level, desired_perks, current_perks):
+                available_perks.append(perk)
+
+    return available_perks
+
+def get_target_attribute_to_increase(current_perks, desired_perks, attributes):
+    for perk in desired_perks:
+        if perk not in current_perks and perk.attribute_rank > attributes[perk.attribute]:
+            return perk.attribute
+    return None
+
+def get_suggestion(attributes, desired_perks):
+    current_perks=[]
+    suggestions={}
+    for level in range(1,50):
+        available_perks = get_available_perks(attributes, perks, level, desired_perks, current_perks)
+
+        if available_perks:
+            suggestions[level] = available_perks[0].name
+            current_perks.append(available_perks[0])
+        else:
+            attribute = get_target_attribute_to_increase(current_perks, desired_perks, attributes)
+
+            if attribute:
+                suggestions[level] = attribute
+            else:
+                suggestions[level] = "Nothing!"
+
+    return suggestions
+
