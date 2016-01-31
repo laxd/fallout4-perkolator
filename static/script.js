@@ -19,6 +19,19 @@ $(document).ready(function(){
 		console.log("Increase " + perkname + " - Rank: " + perkToRank[perkname])
 	});
 
+	$("#get-suggestion").on("click", function() {
+		console.log("Getting suggestion...")
+		$.ajax({
+			url: "/get-suggestion",
+			method: "POST",
+			data: perkToRank,
+			success: function(data) {
+				for(key in data) {
+					$("#suggestions").append(key + " -> " + data[key])
+				}
+			}
+		})
+	});
 
 	var perkToRank = {}
 
